@@ -13,13 +13,11 @@ def usersGetListOrPost(request):
         case 'POST':
             return postHandler(request,UserSerializer)
         
-@api_view(['GET','DELETE','PATCH'])
+@api_view(['GET','DELETE'])
 def usersPatchOrDelete(request,user_id=None):
     match request.method:
         case 'GET':
             return getHandler(User,UserSerializer,user_id)
-        case 'PATCH':
-            return patchHandler(request,user_id,User, UserSerializer,[])
         case 'DELETE':
             return deleteHandler(user_id,User)
        
